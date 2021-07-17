@@ -1,6 +1,6 @@
 fetchNuGet:
 [
-    (fetchNuGet {
+  (fetchNuGet {
     name = "Mono.Cecil";
     version = "0.11.2";
     sha256 = "114idyjaa6npi580d61gvr7i5xfcy5xi2yc1pfr9y82pj5kj7x5a";
