@@ -17,8 +17,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "babbaj";
     repo = "Il2CppDumper";
-    rev = "5f0fcb9e94faeb55090e7571d87c43258991aec9";
-    sha256 = "1qlxz0gxkz8gfh4dis1bixazg6xa0awxxbg26l0501s9q0sqgwr6";
+    rev = "66cd66dd08ee5bd76eb8e739834244d812486b82";
+    sha256 = "0n19vfrxkzh21imw7ymy1n7q179clbgdian74kvlq6gr1m747rxp";
   };
 
   nativeBuildInputs = [ dotnet-sdk_3 dotnetPackages.Nuget makeWrapper ];

@@ -17,7 +17,7 @@ writeScriptBin "dump"
 ''
     #!${stdenv.shell}
     rust=$(mktemp -d -t rust-XXXX)
-    ${depotdownloader}/bin/depotdownloader -os windows -osarch 64 -app 252490 -filelist ${files} -dir $rust -username ${username} -password ${password}
+    ${depotdownloader}/bin/DepotDownloader -os windows -osarch 64 -app 252490 -filelist ${files} -dir $rust -username ${username} -password ${password}
     err=$?
     if [[ $err -ne 0 ]] ; then 
         rm -rf $rust
