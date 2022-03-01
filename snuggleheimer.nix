@@ -35,5 +35,7 @@ stdenv.mkDerivation {
     libsamplerate
   ];
 
-  cmakeFlags = [ "-DOPTIMIZE_FOR_NATIVE=OFF" "-DENABLE_WAYLAND=no" ];
+  NIX_CFLAGS_COMPILE = "-march=native";
+
+  cmakeFlags = [ "-DENABLE_WAYLAND=no" ];
 }
