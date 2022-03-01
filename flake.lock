@@ -229,11 +229,11 @@
     "snuggleheimer": {
       "flake": false,
       "locked": {
-        "lastModified": 1641453616,
-        "narHash": "sha256-E+h6hoH3V2GKfyhzrn0f+ygACIZFNpzbyXs73y92FME=",
+        "lastModified": 1646115053,
+        "narHash": "sha256-0ESzLCVNFI3s29Uw5W8a7NWSxyPRxAsrOWcdT7k3qsk=",
         "ref": "snuggle",
-        "rev": "8bc24aaab0f5a717aaa75b8b089529e28e609e01",
-        "revCount": 2575,
+        "rev": "d0b537fbadd4ab99a786fe44ad8071b008783a21",
+        "revCount": 2869,
         "type": "git",
         "url": "ssh://git@github.com/babbaj/snuggleheimer.git"
       },
