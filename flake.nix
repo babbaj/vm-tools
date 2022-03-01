@@ -31,11 +31,14 @@
 
       devShell.${system} = with memflow-nixos.packages.${system}; 
       pkgs.mkShell {
-        MEMFLOW_EXTRA_PLUGIN_PATHS = lib.makeLibraryPath [
-          memflow-kvm # KVM Connector
-          memflow-win32 # Win32 Connector plugin
-          memflow-qemu # QEMU procfs Connector
-        ];
+        MEMFLOW_EXTRA_PLUGIN_PATHS = pkgs.symlinkJoin {
+          name = "memflow-connectors";
+          paths = [
+            "${memflow-kvm}/lib/" # KVM Connector
+            "${memflow-win32}/lib/" # Win32 Connector plugin
+            "${memflow-qemu}/lib/" # QEMU procfs Connector
+          ];
+        };
 
         nativeBuildInputs = with pkgs; [
           pkg-config-file
