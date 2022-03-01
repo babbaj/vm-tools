@@ -61,7 +61,11 @@
         in writeScriptBin "dump" ''
           #!${stdenv.shell}
           game=$(mktemp -d -t rust-XXXX)
-          ${depotdownloader}/bin/DepotDownloader -os windows -osarch 64 -app ${toString appId} -filelist ${files} -dir $game
+          echo 'Enter username: '
+          read username
+          echo 'Enter password: '
+          read password
+          ${depotdownloader}/bin/DepotDownloader -os windows -osarch 64 -app ${toString appId} -filelist ${files} -dir $game -username $username -password $password
           err=$?
           if [[ $err -ne 0 ]]; then 
               rm -rf $rust
