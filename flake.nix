@@ -61,10 +61,8 @@
         in writeScriptBin "dump" ''
           #!${stdenv.shell}
           game=$(mktemp -d -t rust-XXXX)
-          echo 'Enter username: '
-          read -p username
-          echo 'Enter password: '
-          read -s -p password
+          read -p 'Steam username: ' username
+          read -s -p 'Steam password: ' password
           ${depotdownloader}/bin/DepotDownloader -os windows -osarch 64 -app ${toString appId} -filelist ${files} -dir $game -username $username -password $password
           err=$?
           if [[ $err -ne 0 ]]; then 
