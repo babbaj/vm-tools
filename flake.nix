@@ -62,9 +62,9 @@
           #!${stdenv.shell}
           game=$(mktemp -d -t rust-XXXX)
           echo 'Enter username: '
-          read username
+          read -p username
           echo 'Enter password: '
-          read password
+          read -s -p password
           ${depotdownloader}/bin/DepotDownloader -os windows -osarch 64 -app ${toString appId} -filelist ${files} -dir $game -username $username -password $password
           err=$?
           if [[ $err -ne 0 ]]; then 
