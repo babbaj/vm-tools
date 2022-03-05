@@ -8,7 +8,7 @@
       url = "git+ssh://git@github.com/babbaj/snuggleheimer.git?ref=snuggle";
       flake = false;
     };
-    memflow-nixos.url = github:memflow/memflow-nixos;
+    memflow-nixos.url = github:memflow/memflow-nixos?ref=pull/5/head;#github:memflow/memflow-nixos;
   };
 
   outputs = { self, nixpkgs, flake-utils, snuggleheimer, memflow-nixos }:
@@ -41,8 +41,9 @@
         };
 
         nativeBuildInputs = with pkgs; [
-          pkg-config-file
+          #pkg-config-file
           pkg-config
+          memflow-nixos.packages.${system}.memflow
 
           self.packages.${system}.snuggleheimer
           libGL
