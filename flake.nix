@@ -5,7 +5,11 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     snuggleheimer = {
-      url = "git+ssh://git@github.com/babbaj/snuggleheimer.git?ref=snuggle";
+      #url = "git+ssh://git@github.com/babbaj/snuggleheimer.git?ref=snuggle";
+      url = "git+ssh://git@github.com/babbaj/snuggleheimer.git";
+      type = "git";
+      ref = "snuggle";
+      submodules = true;
       flake = false;
     };
     memflow-nixos.url = github:memflow/memflow-nixos?ref=pull/5/head;#github:memflow/memflow-nixos;
@@ -13,11 +17,6 @@
 
   outputs = { self, nixpkgs, flake-utils, snuggleheimer, memflow-nixos }:
     let
-      snuggleheimer-src = builtins.fetchGit {
-        url = "ssh://git@github.com/babbaj/snuggleheimer.git";
-        inherit (snuggleheimer) rev;
-        submodules = true;
-      };
       system = "x86_64-linux"; # this doesn't need to be portable
       pkgs = import nixpkgs { inherit system; };
       lib = pkgs.lib;
@@ -25,7 +24,7 @@
       packages.${system} = {
         snuggleheimer = import ./snuggleheimer.nix {
           inherit pkgs;
-          src = snuggleheimer-src;
+          src = snuggleheimer;
         };
       };
 
