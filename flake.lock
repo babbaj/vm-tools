@@ -3,11 +3,11 @@
     "cglue-bindgen": {
       "flake": false,
       "locked": {
-        "lastModified": 1645355609,
-        "narHash": "sha256-h86oUZT2A8UDCxA2mRjBTSDHUvKhv+LOUn2OIhuX+1E=",
+        "lastModified": 1647799225,
+        "narHash": "sha256-DprIuK75ldeU1JHOi25GFXV167OmAoGDaJ1JPxZR9ig=",
         "owner": "h33p",
         "repo": "cglue",
-        "rev": "e6761fce0b596ef16494194be40316135568cf21",
+        "rev": "4a942c55a6dd215045132b51d63b47b32560b0cc",
         "type": "github"
       },
       "original": {
@@ -77,30 +77,64 @@
         "type": "github"
       }
     },
-    "memflow": {
+    "il2cppdumper": {
       "flake": false,
       "locked": {
-        "lastModified": 1645573610,
-        "narHash": "sha256-Q2D1HWM3zPGWqTVK/auCC1FXHjeMBAQwQW8WIV52L8Q=",
+        "lastModified": 1633736869,
+        "narHash": "sha256-t+dDTg35GUz3JMeq2N6iLJ2Ajw2++sNrDAL+2bPbKVg=",
+        "owner": "babbaj",
+        "repo": "Il2CppDumper",
+        "rev": "66cd66dd08ee5bd76eb8e739834244d812486b82",
+        "type": "github"
+      },
+      "original": {
+        "owner": "babbaj",
+        "ref": "header",
+        "repo": "Il2CppDumper",
+        "type": "github"
+      }
+    },
+    "memflow": {
+      "inputs": {
+        "cglue-bindgen": "cglue-bindgen",
+        "cloudflow": "cloudflow",
+        "flake-utils": "flake-utils_2",
+        "memflow": "memflow_2",
+        "memflow-coredump": "memflow-coredump",
+        "memflow-kcore": "memflow-kcore",
+        "memflow-kvm": "memflow-kvm",
+        "memflow-microvmi": "memflow-microvmi",
+        "memflow-native": "memflow-native",
+        "memflow-pcileech": "memflow-pcileech",
+        "memflow-qemu": "memflow-qemu",
+        "memflow-win32": "memflow-win32",
+        "nixpkgs": "nixpkgs",
+        "reflow": "reflow",
+        "rust-overlay": "rust-overlay",
+        "scanflow": "scanflow"
+      },
+      "locked": {
+        "lastModified": 1648061449,
+        "narHash": "sha256-t5Uc1tFz6j4n1BZGdRN+mSJK5qKdALlfa8VPpjGEra8=",
         "owner": "memflow",
-        "repo": "memflow",
-        "rev": "8d2d7ff4c5c80a583306289225d427a59721f30c",
+        "repo": "memflow-nixos",
+        "rev": "8dd671470be6a67bc5ef13b4863624168c45434d",
         "type": "github"
       },
       "original": {
         "owner": "memflow",
-        "repo": "memflow",
+        "repo": "memflow-nixos",
         "type": "github"
       }
     },
     "memflow-coredump": {
       "flake": false,
       "locked": {
-        "lastModified": 1646476313,
-        "narHash": "sha256-kXNlC8Cx7rsWgVlle1Sosa5clFgC1QB7QcyweqHwEeY=",
+        "lastModified": 1647802933,
+        "narHash": "sha256-ta4P5eovDsiSQ301LtVrI14bkN47UmeyunCBijCOV54=",
         "owner": "memflow",
         "repo": "memflow-coredump",
-        "rev": "0a87989a613ac04fd357882b7e700ec1bf8fcee6",
+        "rev": "e52988d112c3bed3e450f83451fa700b60388673",
         "type": "github"
       },
       "original": {
@@ -112,11 +146,11 @@
     "memflow-kcore": {
       "flake": false,
       "locked": {
-        "lastModified": 1645547894,
-        "narHash": "sha256-rKI1WDQTnnlAl6WfcAQa6tVwZzr9DKbvfK77xfhIMzI=",
+        "lastModified": 1647803123,
+        "narHash": "sha256-gwRCXjZm7EUJtdLnzB3wYeZFNqdaX6SUY9fdPES9Zo0=",
         "owner": "memflow",
         "repo": "memflow-kcore",
-        "rev": "88183a40873943ec48d66e880f1227c1c51706c6",
+        "rev": "15fe4dcb2b70affe5a6d24f538cbd4d8beb6299b",
         "type": "github"
       },
       "original": {
@@ -128,11 +162,11 @@
     "memflow-kvm": {
       "flake": false,
       "locked": {
-        "lastModified": 1645359404,
-        "narHash": "sha256-PndW8pOb4WFubKcCUND/ahrhgLg70Yuy+lPwchsi5Zc=",
+        "lastModified": 1647802996,
+        "narHash": "sha256-WHkNW2L7fBx0jmjHGv3H/1qXbzKHCNiFkejE0xCAx+s=",
         "ref": "main",
-        "rev": "4050f1a12b93c5718c08419847977892b518c05d",
-        "revCount": 83,
+        "rev": "98439ba6e6e1e6ffd5cd2074bea92496ebf01835",
+        "revCount": 85,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/memflow/memflow-kvm.git"
@@ -163,61 +197,27 @@
     "memflow-native": {
       "flake": false,
       "locked": {
-        "lastModified": 1645547695,
-        "narHash": "sha256-8e5T0vqHo2yCcEf9+05ZFg5kMJPxyJl5aJH3LODOW6w=",
+        "lastModified": 1647802846,
+        "narHash": "sha256-9VTvU3107o7fbY6g+fQFtYauS4Y3QpzH3B6yGYW6Qo4=",
         "owner": "memflow",
         "repo": "memflow-native",
-        "rev": "0ef63477f6481e36f4b80f8ecf4dd86387fae9c7",
+        "rev": "a9410c0873fff96e824a901116cd344817a5b82e",
         "type": "github"
       },
       "original": {
         "owner": "memflow",
         "repo": "memflow-native",
-        "type": "github"
-      }
-    },
-    "memflow-nixos": {
-      "inputs": {
-        "cglue-bindgen": "cglue-bindgen",
-        "cloudflow": "cloudflow",
-        "flake-utils": "flake-utils_2",
-        "memflow": "memflow",
-        "memflow-coredump": "memflow-coredump",
-        "memflow-kcore": "memflow-kcore",
-        "memflow-kvm": "memflow-kvm",
-        "memflow-microvmi": "memflow-microvmi",
-        "memflow-native": "memflow-native",
-        "memflow-pcileech": "memflow-pcileech",
-        "memflow-qemu": "memflow-qemu",
-        "memflow-win32": "memflow-win32",
-        "nixpkgs": "nixpkgs",
-        "reflow": "reflow",
-        "rust-overlay": "rust-overlay",
-        "scanflow": "scanflow"
-      },
-      "locked": {
-        "lastModified": 1647273205,
-        "narHash": "sha256-xIImihet1+cq49CcuHlwcRitHkfQlEUqJd52s9y8N9s=",
-        "owner": "memflow",
-        "repo": "memflow-nixos",
-        "rev": "8708657ce4b75534d34b0cde5041b6bbe733c1c7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "memflow",
-        "ref": "pull/5/head",
-        "repo": "memflow-nixos",
         "type": "github"
       }
     },
     "memflow-pcileech": {
       "flake": false,
       "locked": {
-        "lastModified": 1644792795,
-        "narHash": "sha256-Y5CJ188eaeJ5z5HzccAOBksdAqFK4T698iDy3H52cdE=",
+        "lastModified": 1647804687,
+        "narHash": "sha256-dvJLl4O5VWDzYX+P1dEGs20Qv0BqDQdtb4wFqtq2BMI=",
         "ref": "main",
-        "rev": "4e51d1572bc13a906a6345e14437f1eb917579ad",
-        "revCount": 89,
+        "rev": "9e35ddf1354f87d598e80aa92a4c1f91e4ebe28a",
+        "revCount": 97,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/memflow/memflow-pcileech.git"
@@ -232,11 +232,11 @@
     "memflow-qemu": {
       "flake": false,
       "locked": {
-        "lastModified": 1646476326,
-        "narHash": "sha256-NqWCZRvzyBIn2iks6y4cbEJ3c3tiQ8kj+jHL9KQIu8g=",
+        "lastModified": 1647802968,
+        "narHash": "sha256-JqUchK6ym1equaB8cnme2mM3xEdklIFcJXz2t4qqMiU=",
         "owner": "memflow",
         "repo": "memflow-qemu",
-        "rev": "1b1aa862e8fd5a6a5d7d33b8a3da50891852f9a4",
+        "rev": "a81c4a1168663b3c2bbfc3ff7fc788a1421585ce",
         "type": "github"
       },
       "original": {
@@ -248,11 +248,11 @@
     "memflow-win32": {
       "flake": false,
       "locked": {
-        "lastModified": 1646391187,
-        "narHash": "sha256-6hBSTtXrisinT+sbmnDpKnbmInT0Bk1H8TCG3zHhPyg=",
+        "lastModified": 1647803890,
+        "narHash": "sha256-qvBfVFZDXw6cndnI31WaCUjYSMEu5Rf5g2YdoLBmKZk=",
         "owner": "memflow",
         "repo": "memflow-win32",
-        "rev": "65b51b93ce8def27fce2b00588ced5506a85ed47",
+        "rev": "7a8b41be45457144989bec65d0acf6701378874e",
         "type": "github"
       },
       "original": {
@@ -261,13 +261,29 @@
         "type": "github"
       }
     },
+    "memflow_2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1647804031,
+        "narHash": "sha256-f96WO+BC4e72nejdIpHbhELicV4b2I2OabuFcvxpuGE=",
+        "owner": "memflow",
+        "repo": "memflow",
+        "rev": "c88656b5037bfb4ebb087e80b159221e4ade861a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "memflow",
+        "repo": "memflow",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1646939531,
-        "narHash": "sha256-bxOjVqcsccCNm+jSmEh/bm0tqfE3SdjwS+p+FZja3ho=",
+        "lastModified": 1647893727,
+        "narHash": "sha256-pOi7VdCb+s5Cwh5CS7YEZVRgH9uCmE87J5W7iXv29Ck=",
         "owner": "NixOS",
         "repo": "Nixpkgs",
-        "rev": "fcd48a5a0693f016a5c370460d0c2a8243b882dc",
+        "rev": "1ec61dd4167f04be8d05c45780818826132eea0d",
         "type": "github"
       },
       "original": {
@@ -328,9 +344,9 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "memflow-nixos": "memflow-nixos",
-        "nixpkgs": "nixpkgs_3",
-        "snuggleheimer": "snuggleheimer"
+        "il2cppdumper": "il2cppdumper",
+        "memflow": "memflow",
+        "nixpkgs": "nixpkgs_3"
       }
     },
     "rust-overlay": {
@@ -339,11 +355,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1647224709,
-        "narHash": "sha256-Lt8Vo2eRahkww3Ia7AyxAiKCf59TW0OWZ9vKd5WvAJ4=",
+        "lastModified": 1648002858,
+        "narHash": "sha256-NDtx7Rn6E/y82O+LjzKhc0kZRAO5pmuuRfgN0Nj7uKs=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "fea74aea1b2b99e13338a345034089a344399359",
+        "rev": "d950f21d1a8d97ec49aff19f191632aa74f3a5d7",
         "type": "github"
       },
       "original": {
@@ -355,36 +371,17 @@
     "scanflow": {
       "flake": false,
       "locked": {
-        "lastModified": 1646441197,
-        "narHash": "sha256-14AeuHYWejLyJMDy++CaNtAEfPhw0QUycLrArHdDOX0=",
+        "lastModified": 1647989733,
+        "narHash": "sha256-/MfW4rV/Xm+Av2s63gDhVb4EJuhqV2/FZ3Il5lUsdLs=",
         "owner": "memflow",
         "repo": "scanflow",
-        "rev": "d82e220c2454b5dfc3022837f6243e603a25e0fe",
+        "rev": "2635eda7275887fac612e67440fc077051b3d018",
         "type": "github"
       },
       "original": {
         "owner": "memflow",
         "repo": "scanflow",
         "type": "github"
-      }
-    },
-    "snuggleheimer": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1647062763,
-        "narHash": "sha256-Ba3heB9Zhni+WCyryOoZUL1s85n+fjVF0ahIsCmyKGw=",
-        "ref": "snuggle",
-        "rev": "12c459ffe060fe55fb4529eedcd82ad98cfbc189",
-        "revCount": 2871,
-        "submodules": true,
-        "type": "git",
-        "url": "git+ssh://git@github.com/babbaj/snuggleheimer.git"
-      },
-      "original": {
-        "ref": "snuggle",
-        "submodules": true,
-        "type": "git",
-        "url": "git+ssh://git@github.com/babbaj/snuggleheimer.git"
       }
     }
   },

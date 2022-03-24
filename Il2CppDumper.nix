@@ -1,9 +1,16 @@
-{ stdenv, lib, fetchFromGitHub, fetchurl, linkFarmFromDrvs, makeWrapper
-,  dotnet-sdk_3, dotnetPackages
+{ stdenv
+, lib
+, fetchFromGitHub
+, fetchurl
+, linkFarmFromDrvs
+, makeWrapper
+, dotnet-sdk_3
+, dotnetPackages
+, il2cppdumper-src
 }:
 
 let
-  fetchNuGet = {name, version, sha256}: fetchurl {
+  fetchNuGet = { name, version, sha256 }: fetchurl {
     name = "nuget-${name}-${version}.nupkg";
     url = "https://www.nuget.org/api/v2/package/${name}/${version}";
     inherit sha256;
@@ -14,12 +21,7 @@ stdenv.mkDerivation rec {
   pname = "il2cppdumper";
   version = "header";
 
-  src = fetchFromGitHub {
-    owner = "babbaj";
-    repo = "Il2CppDumper";
-    rev = "66cd66dd08ee5bd76eb8e739834244d812486b82";
-    sha256 = "0n19vfrxkzh21imw7ymy1n7q179clbgdian74kvlq6gr1m747rxp";
-  };
+  src = il2cppdumper-src;
 
   nativeBuildInputs = [ dotnet-sdk_3 dotnetPackages.Nuget makeWrapper ];
 
@@ -38,4 +40,8 @@ stdenv.mkDerivation rec {
     makeWrapper ${dotnet-sdk_3}/bin/dotnet $out/bin/Il2CppDumper \
       --add-flags $out/Il2CppDumper.dll
   '';
+
+  meta = {
+    mainProgram = "Il2CppDumper";
+  };
 }

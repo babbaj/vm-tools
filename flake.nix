@@ -12,71 +12,40 @@
       submodules = true;
       flake = false;
     };
-    memflow-nixos.url = github:memflow/memflow-nixos?ref=pull/5/head;#github:memflow/memflow-nixos;
+    memflow.url = github:memflow/memflow-nixos;
+    il2cppdumper = {
+      url = github:babbaj/Il2CppDumper/header;
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, flake-utils, snuggleheimer, memflow-nixos }:
-    let
-      system = "x86_64-linux"; # this doesn't need to be portable
-      pkgs = import nixpkgs { inherit system; };
-      lib = pkgs.lib;
-    in {
-      packages.${system} = {
-        snuggleheimer = import ./snuggleheimer.nix {
-          inherit pkgs;
-          src = snuggleheimer;
-        };
-      };
-
-      devShell.${system} = with memflow-nixos.packages.${system}; 
-      pkgs.mkShell {
-        MEMFLOW_EXTRA_PLUGIN_PATHS = pkgs.symlinkJoin {
-          name = "memflow-connectors";
-          paths = [
-            "${memflow-kvm}/lib/" # KVM Connector
-            "${memflow-win32}/lib/" # Win32 Connector plugin
-            "${memflow-qemu}/lib/" # QEMU procfs Connector
-          ];
-        };
-
-        nativeBuildInputs = with pkgs; [
-          #pkg-config-file
-          pkg-config
-          memflow-nixos.packages.${system}.memflow
-
-          self.packages.${system}.snuggleheimer
-          libGL
-        ];
-      };
-
-      dumper = { dataDir, appId }: with pkgs;
-        let
-          files = writeTextFile {
-            name = "files";
-            text = ''
-              GameAssembly.dll
-              global-metadata.dat
-              ${dataDir}/il2cpp_data/Metadata/global-metadata.dat
-            '';
+  outputs = { self, nixpkgs, flake-utils, memflow, snuggleheimer, ... } @ inputs:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        packages = {
+          snuggleheimer = import ./snuggleheimer.nix {
+            inherit pkgs;
+            src = snuggleheimer;
           };
 
-          dumper = callPackage ./Il2CppDumper.nix { };
-        in writeScriptBin "dump" ''
-          #!${stdenv.shell}
-          game=$(mktemp -d -t rust-XXXX)
-          read -p 'Steam username: ' username
-          read -s -p 'Steam password: ' password
-          ${depotdownloader}/bin/DepotDownloader -os windows -osarch 64 -app ${toString appId} -filelist ${files} -dir $game -username $username -password $password
-          err=$?
-          if [[ $err -ne 0 ]]; then 
-              rm -rf $rust
-              exit $err
-          fi
-          ${dumper}/bin/Il2CppDumper $game/GameAssembly.dll $game/${dataDir}/il2cpp_data/Metadata/global-metadata.dat ./
-          err=$?
-          rm -rf $game
-          exit $err
-        '';
-    };
-}
+          # Il2CppDumper dumper program itself
+          il2cppdumper = pkgs.callPackage ./Il2CppDumper.nix { il2cppdumper-src = inputs.il2cppdumper; };
 
+          # Convenience script for Il2CppDumper & DepotDownloader
+          dump-il2cpp = pkgs.callPackage ./dump-il2cpp.nix { inherit (self.packages.${system}) il2cppdumper; };
+        };
+
+        devShell = pkgs.mkShell {
+          nativeBuildInputs = with pkgs; with memflow.packages.${system}; [
+            pkg-config
+            memflow
+
+            self.packages.${system}.snuggleheimer
+            libGL
+          ];
+        };
+      });
+}
