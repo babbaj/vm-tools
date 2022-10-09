@@ -41,7 +41,7 @@
         devShell = pkgs.mkShell {
           nativeBuildInputs = with pkgs; with memflow.packages.${system}; [
             pkg-config
-            memflow
+            memflow-ffi
 
             self.packages.${system}.snuggleheimer
             libGL
